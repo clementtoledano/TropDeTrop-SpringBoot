@@ -27,8 +27,6 @@ public class PostController {
     public Page<Post> getAllPostsByPostId(@PathVariable(value = "categoryId") Long categoryId,
                                           Pageable pageable) {
 
-        System.out.println("GET >>>> bite!");
-
         return postRepository.findByCategoryId(categoryId, pageable);
     }
 
@@ -37,8 +35,6 @@ public class PostController {
                            @PathVariable(value = "categoryId") Long categoryId,
                            @Valid @RequestBody Post post) {
 
-        System.out.println("POST >>> bite! - userId = " + userId + " - postId = " + categoryId);
-        System.out.println(post);
 
         return userRepository.findById(userId).map(user -> {
             post.setUser(user);
